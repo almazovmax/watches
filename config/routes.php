@@ -8,7 +8,7 @@ return array(
     'catalog/page-([0-9]+)' => 'catalog/index/$1',
     'catalog/([a-z]+)' => 'catalog/index/1/0/$1',
     'catalog' => 'catalog/index',
-    //регистрация пользователя
+    //регистрация пользователей
     'register' => 'user/register',
     '' => 'site/index',                                    //actionIndex in SiteController
     'news' => 'news/index',                              //actionIndex in NewsController
