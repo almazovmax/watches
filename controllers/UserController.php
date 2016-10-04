@@ -12,6 +12,7 @@ class UserController
         $email = '';
         $password = '';
 
+        $result = false;
         $errors = false;
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -43,12 +44,12 @@ class UserController
                 $errors[] = 'Введенные пароли не совпадают';
             }
 
-            if(!User::checkEmailExists($email)) {
+            if(User::checkEmailExists($email)) {
                 $errors[] = "Указанный E-mail уже существует";
             }
 
             if($errors == false) {
-
+                $result = User::register($firstName, $lastName, $phone, $email, $password);
             }
 
         }

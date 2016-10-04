@@ -18,15 +18,18 @@
         <div class="register-top heading">
             <h2>REGISTER</h2>
         </div>
-        <?php if (isset($errors) && is_array($errors)): ?>
-            <?php $i = 1; foreach ($errors as $error):?>
-                <div class="col-md-3 infor-left">
-                    <ul>
-                        <li style="color: red"><?= $i?>. <?= $error?></li>
-                    </ul>
-                </div>
-            <?php $i++; endforeach;?>
-        <?php endif;?>
+        <?php if ($result): ?>
+        <div class="container"><p>Регистрация прошла успешно</p></div>
+            <?php else: ?>
+                <?php if (isset($errors) && is_array($errors)): ?>
+                    <?php $i = 1; foreach ($errors as $error):?>
+                        <div class="col-md-3 infor-left">
+                            <ul>
+                                <li style="color: red"><?= $i?>. <?= $error?></li>
+                            </ul>
+                        </div>
+                    <?php $i++; endforeach;?>
+                <?php endif;?>
         <div class="clearfix"></div>
         <form class="register-main" action="" method="post">
             <div class="col-md-6 account-left">
@@ -55,6 +58,7 @@
                 <input type="submit" name="submit" value="Sign Up">
             </div>
         </form>
+        <?endif;?>
     </div>
 </div>
 <!--register-end-->
