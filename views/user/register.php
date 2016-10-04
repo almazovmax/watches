@@ -18,14 +18,24 @@
         <div class="register-top heading">
             <h2>REGISTER</h2>
         </div>
-        <form class="register-main" action="red.php" method="post">
+        <?php if (isset($errors) && is_array($errors)): ?>
+            <?php $i = 1; foreach ($errors as $error):?>
+                <div class="col-md-3 infor-left">
+                    <ul>
+                        <li style="color: red"><?= $i?>. <?= $error?></li>
+                    </ul>
+                </div>
+            <?php $i++; endforeach;?>
+        <?php endif;?>
+        <div class="clearfix"></div>
+        <form class="register-main" action="" method="post">
             <div class="col-md-6 account-left">
                 <h5><label for="user_name">First name</label></h5>
-                <input placeholder="First name" type="text" name="firstName" tabindex="1" required>
+                <input placeholder="First name" type="text" name="firstName" tabindex="1" value="<?= $firstName;?>" required>
                 <h5><label for="user_name">Last name</label></h5>
-                <input placeholder="Last name" type="text" name="lastName" tabindex="2" required>
+                <input placeholder="Last name" type="text" name="lastName" tabindex="2" value="<?= $lastName;?>" required>
                 <h5><label for="phone">Mobile phone</label></h5>
-                <input placeholder="Mobile" type="text" name="phone" tabindex="3" required>
+                <input placeholder="Mobile" type="text" name="phone" tabindex="3" value="<?= $phone;?>" required>
                 <ul>
                     <li><label class="radio left"><input type="radio" name="radio" checked=""><i></i>Male</label></li>
                     <li><label class="radio"><input type="radio" name="radio"><i></i>Female</label></li>
@@ -34,11 +44,11 @@
             </div>
             <div class="col-md-6 account-left">
                 <h5><label for="email">E-mail</label></h5>
-                <input placeholder="Email address" type="email" name="email" tabindex="3" required>
+                <input placeholder="Email address" type="email" name="email" tabindex="4" value="<?= $email;?>" required>
                 <h5><label for="password">Password</label></h5>
-                <input placeholder="Password" type="password" name="password" tabindex="4" required>
+                <input placeholder="Password" type="password" name="password" tabindex="5" required>
                 <h5><label for="password">Retype password</label></h5>
-                <input placeholder="Retype password" type="password" name="password2" tabindex="4" required>
+                <input placeholder="Retype password" type="password" name="password2" tabindex="6" required>
             </div>
             <div class="clearfix"></div>
             <div class="address submit">
@@ -48,12 +58,5 @@
     </div>
 </div>
 <!--register-end-->
-
-<?php if($_SERVER['REQUEST_METHOD'] == 'POST') : ?>
-
-<script>
-    swal('1','2','error');
-</script>
-<?php endif;?>
 
 <?php include ROOT.'/views/layouts/footer.php'; ?>
