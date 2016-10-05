@@ -2,6 +2,46 @@
 
 class UserController
 {
+    public function actionLogin ()
+    {
+        $email = '';
+        $password = '';
+
+
+        if($_SERVER['REQUEST_METHOD'] = 'POST') {
+            $email = $_POST['email'];
+            $email = User::stripTags($email);
+
+            $password = $_POST['password'];
+            $password = User::stripTags($password);
+
+            $errors = false;
+
+            if (!User::checkEmail($email)) {
+                $errors[] = "Неверно введенный E-mail";
+            }
+
+            if (!User::checkPassword($password)) {
+                $errors[] = "Пароль должен состоять из букв и цифр любого регистра и содержать не менее 7 символов";
+            }
+
+            $userId = User::checkUserData($email, $password);
+
+            if($userId == false) {
+                $errors[] = 'Неверный логин или пароль';
+            }
+            else {
+                User::auth($userId);
+
+                header('Location: /account/');
+            }
+
+        }
+
+
+        require_once ROOT.'/views/user/login.php';
+        return true;
+    }
 
     public function actionRegister()
     {

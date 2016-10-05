@@ -16,7 +16,7 @@
 <div class="register">
     <div class="container">
         <div class="register-top heading">
-            <h2>REGISTER</h2>
+            <h2>REGISTER or <a class="account-right account-left" href="/login">LOGIN</a></h2>
         </div>
         <?php if ($result): ?>
         <div class="container"><p>Регистрация прошла успешно</p></div>

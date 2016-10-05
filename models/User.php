@@ -3,6 +3,30 @@
 class User
 {
 
+    public static function checkUserData ($email, $passsword)
+    {
+        $db = Db::getConnection();
+        $sql = 'SELECT * FROM user WHERE email = :email AND passsword = :password';
+
+        $result = $db -> prepare();
+        $result -> bindParam(':email', $email, PDO::PARAM_STR);
+        $result -> bindParam(':password', $password, PDO::PARAM_STR);
+        $result -> execute();
+
+        $user = $result -> fetch();
+        if($user) {
+            return $user['id'];
+        }
+        return false;
+    }
+
+    public static function auth($userId)
+    {
+        session_start();
+        $_SESSION['user'] = $userId;
+    }
+
+
     public static function stripTags($var)
     {
         $var = strip_tags($var);
