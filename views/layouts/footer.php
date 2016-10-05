@@ -22,13 +22,20 @@
             </div>
             <div class="col-md-3 infor-left">
                 <h3>My Account</h3>
-                <ul>
-                    <li><a href="/login"><p>My Account</p></a></li>
-                    <li><a href="#"><p>My Credit slips</p></a></li>
-                    <li><a href="#"><p>My Merchandise returns</p></a></li>
-                    <li><a href="#"><p>My Personal info</p></a></li>
-                    <li><a href="#"><p>My Addresses</p></a></li>
-                </ul>
+                <?php if(User::isGuest()):?>
+                    <ul>
+                        <li><a href="/account"><p>Login</p></a></li>
+                        <li><a href="/register"><p>Register</p></a></li>
+                    </ul>
+                <?php else: ?>
+                    <ul>
+                        <li><a href="/account"><p>My Account</p></a></li>
+                        <li><a href="#"><p>My Credit slips</p></a></li>
+                        <li><a href="#"><p>My Personal info</p></a></li>
+                        <li><a href="#"><p>My Addresses</p></a></li>
+                        <li><a href="/logout"><p>Logout</p></a></li>
+                    </ul>
+                <?php endif; ?>
             </div>
             <div class="col-md-3 infor-left">
                 <h3>Store Information</h3>

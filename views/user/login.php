@@ -5,8 +5,8 @@
     <div class="container">
         <div class="breadcrumbs-main">
             <ol class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li class="active">Account</li>
+                <li><a href="/">Home</a></li>
+                <li class="active">Login</li>
             </ol>
         </div>
     </div>
@@ -16,7 +16,7 @@
 <div class="account">
     <div class="container">
         <div class="account-top heading">
-            <h2>ACCOUNT</h2>
+            <h2>LOGIN</h2>
         </div>
         <?php if (isset($errors) && is_array($errors)): ?>
             <?php $i = 1; foreach ($errors as $error):?>
@@ -31,7 +31,7 @@
         <div class="account-main">
             <div class="col-md-6 account-left">
                 <h3>Existing User</h3>
-                <form action="#" class="account-bottom">
+                <form action="#" method="post" class="account-bottom">
                     <input placeholder="Email" type="email" name="email" tabindex="3" value="<?= $email;?>" required>
                     <input placeholder="Password" type="password" name="password" tabindex="4" required>
                     <div class="address">

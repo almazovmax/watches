@@ -10,7 +10,13 @@ return array(
     'catalog' => 'catalog/index',
     //регистрация пользователей
     'register' => 'user/register',
+    //авторизация
     'login' => 'user/login',
+    'logout' => 'user/logout',
+    //аккаунт пользователя
+    'account' => 'account/index',
+    //обратная связь
+    'contact' => 'site/contact',
     '' => 'site/index',                                    //actionIndex in SiteController
     'news' => 'news/index',                              //actionIndex in NewsController
     'news/([0-9]+)' => 'news/view/$1'                     //actionIndex in NewsController
