@@ -70,14 +70,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-6 top-header-left">
                 <div class="drop">
                     <div class="box">
-                        <select tabindex="4" class="dropdown drop">
+                        <select class="dropdown drop">
                             <option value="" class="label">Dollar :</option>
                             <option value="1">Dollar</option>
                             <option value="2">Euro</option>
                         </select>
                     </div>
                     <div class="box1">
-                        <select tabindex="4" class="dropdown">
+                        <select class="dropdown">
                             <option value="" class="label">English :</option>
                             <option value="1">English</option>
                             <option value="2">French</option>

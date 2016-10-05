@@ -67,18 +67,5 @@ class Router
 
 
         //создать объект, вызвать метод, т е action
-
-
-
-
-
-
-
-
-
-/*        echo '<pre>';
-        print_r($this->routes);
-        echo "Class Router, method run";
-        echo '</pre>';*/
     }
 }

@@ -17,11 +17,22 @@ class UserController
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $firstName = $_POST['firstName'];
+            $firstName = User::stripTags($firstName);
+
             $lastName = $_POST['lastName'];
+            $lastName = User::stripTags($lastName);
+
             $phone = $_POST['phone'];
+            $phone = User::stripTags($phone);
+
             $email = $_POST['email'];
+            $email = User::stripTags($email);
+
             $password = $_POST['password'];
+            $password = User::stripTags($password);
+
             $password2 = $_POST['password2'];
+            $password2 = User::stripTags($password2);
 
             if(!User::checkName($firstName,$lastName)) {
                 $errors[] = 'Имя и фамилия должны состоять не менее, чем из 2 символов';

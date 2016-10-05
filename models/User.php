@@ -2,9 +2,31 @@
 
 class User
 {
-    public static function register ()
-    {
 
+    public static function stripTags($var)
+    {
+        $var = strip_tags($var);
+        $var = stripslashes($var);
+        $var = htmlspecialchars($var);
+        $var = trim($var);
+        return $var;
+
+    }
+
+    public static function register ($firstName, $lastName, $phone, $email, $password)
+    {
+        $db = Db::getConnection();
+        $sql = 'INSERT INTO user (firstName, lastName, email, phone, password) ' .
+        'VALUES (:firstName, :lastName, :email, :phone, :password) ';
+
+        $result = $db -> prepare($sql);
+        $result -> bindParam(':firstName', $firstName, PDO::PARAM_STR);
+        $result -> bindParam(':lastName', $lastName, PDO::PARAM_STR);
+        $result -> bindParam(':email', $email, PDO::PARAM_STR);
+        $result -> bindParam(':phone', $phone, PDO::PARAM_STR);
+        $result -> bindParam(':password', $password, PDO::PARAM_STR);
+
+        return $result -> execute();
     }
 
     public static function checkName ($firstName, $lastName)
@@ -23,7 +45,7 @@ class User
     }
     public static function checkPhone ($phone)
     {
-        if(strlen($phone) >= 10 && filter_var($phone, FILTER_VALIDATE_INT)) {
+        if(strlen($phone) >= 10) {
             return true;
         }
         return false;
