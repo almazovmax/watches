@@ -4,34 +4,33 @@ class CatalogController
 {
     public function actionIndex($page = 1, $brand = false, $sex = 'all')
     {
-/*        echo "Page: $page<br>";
-        echo "Brand: $brand<br>";
-        echo "Sex: $sex<br>";
-        die;*/
 
+        if($sex == 'all' or $sex == 'men' or $sex == 'women' or $sex == 'brand') {
+            if ($brand) {
+                $activ = ucfirst($brand);
+                $active = true;
+            } else {
+                if ($sex == 'all') {
+                    $activ = 'Catalog';
+                } else {
+                    $activ = ucfirst($sex);
+                }
+                $active = false;
+            }
 
-        if($brand) {
-            $activ = ucfirst($brand);
-            $active = true;
+            $total = Product::getTotalProductsInCategory($brand, $sex);
+
+            $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
+
+            $latestProduct = array();
+            $latestProduct = Product::getLatestProducts($page, $brand, $sex);
+
+            require_once ROOT . '/views/catalog/index.php';
+
+            return true;
         }
         else {
-            if ($sex == 'all') {
-                $activ = 'Catalog';
-            } else {
-                $activ = ucfirst($sex);
-            }
-            $active = false;
+            return false;
         }
-
-        $total = Product::getTotalProductsInCategory($brand, $sex);
-
-        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
-
-        $latestProduct = array();
-        $latestProduct = Product::getLatestProducts($page, $brand, $sex);
-
-        require_once ROOT.'/views/catalog/index.php';
-
-        return true;
     }
 }

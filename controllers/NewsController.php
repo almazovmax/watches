@@ -1,6 +1,4 @@
 <?php
-include_once ROOT.'/models/News.php';
-
 class NewsController
 {
     public function actionIndex()
@@ -23,6 +21,7 @@ class NewsController
         print_r($newsItem);
         echo "</pre>";
 
+        require_once ROOT.'/views/news/view.php';
         return true;
     }
 }

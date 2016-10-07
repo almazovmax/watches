@@ -24,6 +24,11 @@ class Router
         }
     }
 
+    private function isAction ($controllerName, $actionName)
+    {
+        return method_exists($controllerName,$actionName);
+    }
+
     public function run()
     {
 
@@ -56,10 +61,22 @@ class Router
                 if(file_exists($controllerFile)) {
                     include_once ($controllerFile);
                 }
-                $controllerObject = new $controllerName;
-                $result = call_user_func_array(array($controllerObject, $actionName),$parameters);
 
-                if($result != null){
+                $controllerObject = new $controllerName;
+
+                if($this -> isAction($controllerName,$actionName)) {
+                    $result = call_user_func_array(array($controllerObject, $actionName),$parameters);
+
+                    if($result){
+                        break;
+                    }
+                    else {
+                        include_once (ROOT.'/views/error/error404.php');
+                        break;
+                    }
+                }
+                else {
+                    include_once (ROOT.'/views/error/error404.php');
                     break;
                 }
             }

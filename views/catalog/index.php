@@ -48,7 +48,6 @@
                                 <div class="product-bottom">
                                     <h3><?= $product['brand']?></h3>
                                     <p><?= $product['name']?></p>
-                                    <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ <?= $product['price']?></span></h4>
                                 </div>
                                 <?php if($product['sale']):?>
                                     <div class="srch srch1">

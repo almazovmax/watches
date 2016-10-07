@@ -17,7 +17,8 @@ return array(
     'account' => 'account/index',
     //обратная связь
     'contact' => 'site/contact',
-    '' => 'site/index',                                    //actionIndex in SiteController
+    //новости
     'news' => 'news/index',                              //actionIndex in NewsController
-    'news/([0-9]+)' => 'news/view/$1'                     //actionIndex in NewsController
+    'news/([0-9]+)' => 'news/view/$1',                     //actionIndex in NewsController
+    '' => 'site/index',                                     //actionIndex in SiteController
 );
